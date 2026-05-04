@@ -4340,6 +4340,7 @@ with tab_opt:
                 display_df[c] = display_df[c].apply(lambda x: f"${x:,.0f}")
 
             # Format bound columns — show "Locked" for locked channels
+            display_df[['Min Bound', 'Max Bound']] = display_df[['Min Bound', 'Max Bound']].astype('object')
             for i, row in df_opt.iterrows():
                 ch_idx = display_df.index[display_df['Channel'] == row['channel']]
                 if int(row.get('lock_spend', 0)) == 1:
